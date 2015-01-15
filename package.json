@@ -1,0 +1,24 @@
+{
+  "name": "polaroidPhotoViewer",
+  "repository" : {
+    "type" : "git",
+    "url" : "http://github.com/gbartnick/polaroidPhotoViewer.git"
+  },
+  "devDependencies": {
+    "express": "4.10.6",
+    "jsx-loader": "^0.12.2",
+    "serve-index": "~1.6.0",
+    "webpack": "~1.4.15",
+    "webpack-dev-server": "^1.7.0"
+  },
+  "dependencies": {
+    "reflux": "~0.2.2",
+    "react": "~0.12.2",
+    "react-router": "~0.11.6",
+    "bootstrap": "~3.3.1"
+  },
+  "scripts": {
+    "build": "webpack --watch",
+    "start": "npm run build & node server"
+  }
+}

@@ -1,0 +1,213 @@
+{
+    "refineFilters": {
+        "assetStatus": [],
+        "fileType": [],
+        "hasAttachedDocs": null,
+        "hasPublicComments": null,
+        "metadata": null,
+        "rating": [
+            {
+                "key": "5",
+                "name": "5",
+                "count": 1
+            },
+            {
+                "key": "3",
+                "name": "3",
+                "count": 2
+            },
+            {
+                "key": "1",
+                "name": "1",
+                "count": 2
+            },
+            {
+                "key": "0",
+                "name": "0",
+                "count": 2
+            }
+        ],
+        "category": []
+    },
+    "filters": [],
+    "defaultSortKey": "date-added-reversed",
+    "sorts": [
+        {
+            "key": "average-rating-reversed",
+            "title": "Average Rating"
+        },
+        {
+            "key": "SORT_GetCollectionName",
+            "title": "Collections"
+        },
+        {
+            "key": "date-added-reversed",
+            "title": "Date Added"
+        },
+        {
+            "key": "date-added-reversed",
+            "title": "Date Added"
+        },
+        {
+            "key": "date-added",
+            "title": "Date Added (reverse)"
+        },
+        {
+            "key": "date-updated-reversed",
+            "title": "Date Updated"
+        },
+        {
+            "key": "expiration-date-reversed",
+            "title": "Expiration Date"
+        },
+        {
+            "key": "file-format",
+            "title": "File Format"
+        },
+        {
+            "key": "filesize-reversed",
+            "title": "File Size"
+        },
+        {
+            "key": "filename",
+            "title": "Filename"
+        },
+        {
+            "key": "last-history-date-reversed",
+            "title": "Last Edit Date"
+        },
+        {
+            "key": "ordered-count-reversed",
+            "title": "Ordered Count"
+        },
+        {
+            "key": "popularity-reversed",
+            "title": "Popularity"
+        }
+    ],
+    "query": "fn:pdf",
+    "searchDescription": "Filename: pdf",
+    "searchError": null,
+    "assets": [
+        {
+            "name": "EPSF-v2-specification.pdf",
+            "uuid": "ddbab31b-6e85-43fb-9406-075af7ef7763",
+            "type": "PDF",
+            "previews": {
+                "preview160": "https://localhost.yden.us:8443/thumbnail/d0a799aa-2a22-42e3-84c6-e6493a96c0f6/av/160px/EPSF-v2-specification.jpg?t=1421433751533&s=6058c0e9e11236846e5b55465f021df16f6cc4df",
+                "preview2048": "https://localhost.yden.us:8443/thumbnail/d0a799aa-2a22-42e3-84c6-e6493a96c0f6/av/2048px/EPSF-v2-specification.jpg?t=1421433751531&s=3e038f75439db9da33762925c1dd67bbdec36e32",
+                "preview300": "https://localhost.yden.us:8443/thumbnail/d0a799aa-2a22-42e3-84c6-e6493a96c0f6/av/300px/EPSF-v2-specification.jpg?t=1421433751533&s=1121a72e483802b9028f19ef8c7af7da52a8c76e",
+                "previewAvailable2048": "true",
+                "preview600": "https://localhost.yden.us:8443/thumbnail/d0a799aa-2a22-42e3-84c6-e6493a96c0f6/av/600px/EPSF-v2-specification.jpg?t=1421433751532&s=95944c5cd5fe65f30e2a965cb8471573e52b16ef",
+                "preview125": "https://localhost.yden.us:8443/thumbnail/d0a799aa-2a22-42e3-84c6-e6493a96c0f6/av/125px/EPSF-v2-specification.jpg?t=1421433751532&s=69ed9e0842917d108b67046ce3d77fba4ec33045"
+            },
+            "fileFormat": "PDF",
+            "dateAdded": "2014-12-18T18:44:55Z",
+            "dateLastEdited": "2014-12-29T14:45:48Z",
+            "size": "0.00 mb"
+        },
+        {
+            "name": "PDF13.pdf",
+            "uuid": "f583d929-d7a5-4fbf-bdd2-01157b6f486e",
+            "type": "PDF",
+            "previews": {
+                "preview160": "https://localhost.yden.us:8443/thumbnail/3edcc628-c931-4bf8-adc9-3af6ac8e4794/av/160px/PDF13.jpg?t=1421433751534&s=0a12f93fd4a11c47a75746cb741f0756f8d00132",
+                "preview2048": "https://localhost.yden.us:8443/thumbnail/3edcc628-c931-4bf8-adc9-3af6ac8e4794/av/2048px/PDF13.jpg?t=1421433751534&s=7a24182dd402c97a523b3d357c15964d0fbefcec",
+                "preview300": "https://localhost.yden.us:8443/thumbnail/3edcc628-c931-4bf8-adc9-3af6ac8e4794/av/300px/PDF13.jpg?t=1421433751535&s=ba7f8ca249d0595ba1cf59d68b30ff972be324ec",
+                "previewAvailable2048": "true",
+                "preview600": "https://localhost.yden.us:8443/thumbnail/3edcc628-c931-4bf8-adc9-3af6ac8e4794/av/600px/PDF13.jpg?t=1421433751534&s=b5f003f6340d5ed6ae6ab5fe083fcd46389ef2cd",
+                "preview125": "https://localhost.yden.us:8443/thumbnail/3edcc628-c931-4bf8-adc9-3af6ac8e4794/av/125px/PDF13.jpg?t=1421433751534&s=a527fefa533c1a5000a9900fd715e40d95b5c578"
+            },
+            "fileFormat": "PDF",
+            "dateAdded": "2014-12-18T18:44:55Z",
+            "dateLastEdited": "2014-12-18T18:44:55Z",
+            "size": "0.00 mb"
+        },
+        {
+            "name": "PDF14.pdf",
+            "uuid": "54e42948-8119-4804-ab98-ef7fe3da4af7",
+            "type": "PDF",
+            "previews": {
+                "preview160": "https://localhost.yden.us:8443/thumbnail/312e07ba-4fa2-40e7-8153-6f8443282b09/av/160px/PDF14.jpg?t=1421433751536&s=5d49eb78b7ac26704e33529ef4bd3f58ab57575a",
+                "preview2048": "https://localhost.yden.us:8443/thumbnail/312e07ba-4fa2-40e7-8153-6f8443282b09/av/2048px/PDF14.jpg?t=1421433751535&s=db7be05e7bce8fa7721d4ac7eb43ab772e4a3002",
+                "preview300": "https://localhost.yden.us:8443/thumbnail/312e07ba-4fa2-40e7-8153-6f8443282b09/av/300px/PDF14.jpg?t=1421433751536&s=e551fa598e3c46ee882d0f7112e5bf4430417682",
+                "previewAvailable2048": "true",
+                "preview600": "https://localhost.yden.us:8443/thumbnail/312e07ba-4fa2-40e7-8153-6f8443282b09/av/600px/PDF14.jpg?t=1421433751535&s=6e2260f3944c07a6ae1e84580be7bd074004780a",
+                "preview125": "https://localhost.yden.us:8443/thumbnail/312e07ba-4fa2-40e7-8153-6f8443282b09/av/125px/PDF14.jpg?t=1421433751535&s=5d7d370c9b7c72be837aef8b5190992b45554ea0"
+            },
+            "fileFormat": "PDF",
+            "dateAdded": "2014-12-18T18:44:55Z",
+            "dateLastEdited": "2014-12-18T18:44:55Z",
+            "size": "0.00 mb"
+        },
+        {
+            "name": "PDF15.pdf",
+            "uuid": "eb4611e3-c076-4570-9da1-d93acee466e0",
+            "type": "PDF",
+            "previews": {
+                "preview160": "https://localhost.yden.us:8443/thumbnail/b2493b5a-d548-49ac-819e-f1a869c2c2d7/av/160px/PDF15.jpg?t=1421433751537&s=756c57a799e69d40d211a304d2d36c11ac9084b6",
+                "preview2048": "https://localhost.yden.us:8443/thumbnail/b2493b5a-d548-49ac-819e-f1a869c2c2d7/av/2048px/PDF15.jpg?t=1421433751536&s=50b3742e38bf058ac0eefbe30f6112f5f8f8696b",
+                "preview300": "https://localhost.yden.us:8443/thumbnail/b2493b5a-d548-49ac-819e-f1a869c2c2d7/av/300px/PDF15.jpg?t=1421433751537&s=65c6fbaa9f30ce851fbdab234677223b16415156",
+                "previewAvailable2048": "true",
+                "preview600": "https://localhost.yden.us:8443/thumbnail/b2493b5a-d548-49ac-819e-f1a869c2c2d7/av/600px/PDF15.jpg?t=1421433751536&s=6a4e494139153778d35b6e0b8371eb545f4eb323",
+                "preview125": "https://localhost.yden.us:8443/thumbnail/b2493b5a-d548-49ac-819e-f1a869c2c2d7/av/125px/PDF15.jpg?t=1421433751537&s=ba28eccef511e35440d264b01bfaaf7fee2d6f35"
+            },
+            "fileFormat": "PDF",
+            "dateAdded": "2014-12-18T18:44:55Z",
+            "dateLastEdited": "2014-12-18T18:44:55Z",
+            "size": "0.00 mb"
+        },
+        {
+            "name": "PDF16.pdf",
+            "uuid": "8767e779-9f15-403e-8465-9d03d629b0b1",
+            "type": "PDF",
+            "previews": {
+                "preview160": "https://localhost.yden.us:8443/thumbnail/7cbc0881-ba2e-4961-bb0b-442a269e94b1/av/160px/PDF16.jpg?t=1421433751538&s=8296fcc1087602751f0cfbdcffc43bb1de13445b",
+                "preview2048": "https://localhost.yden.us:8443/thumbnail/7cbc0881-ba2e-4961-bb0b-442a269e94b1/av/2048px/PDF16.jpg?t=1421433751537&s=29f22f925f04c917cf91f98ee6224400ccd87df5",
+                "preview300": "https://localhost.yden.us:8443/thumbnail/7cbc0881-ba2e-4961-bb0b-442a269e94b1/av/300px/PDF16.jpg?t=1421433751538&s=32662ee4e219d2588d14b05e4d20b26cac46a57f",
+                "previewAvailable2048": "true",
+                "preview600": "https://localhost.yden.us:8443/thumbnail/7cbc0881-ba2e-4961-bb0b-442a269e94b1/av/600px/PDF16.jpg?t=1421433751538&s=d77d4c89e8dac036822942230bd6a7ae3f167169",
+                "preview125": "https://localhost.yden.us:8443/thumbnail/7cbc0881-ba2e-4961-bb0b-442a269e94b1/av/125px/PDF16.jpg?t=1421433751538&s=739929da9fcf0f7417584a04f8e0b60d19f0db97"
+            },
+            "fileFormat": "PDF",
+            "dateAdded": "2014-12-18T18:44:55Z",
+            "dateLastEdited": "2014-12-18T18:44:55Z",
+            "size": "0.00 mb"
+        },
+        {
+            "name": "waffles.pdf",
+            "uuid": "600ad176-783c-45ab-9cd0-1c4ad3b50cca",
+            "type": "PDF",
+            "previews": {
+                "preview160": "https://localhost.yden.us:8443/thumbnail/135c783a-697e-4eea-a979-33f084c1e69b/av/160px/waffles.jpg?t=1421433751539&s=8b31ff0a1383bbe4e01039ac35b9aee6f2bbf049",
+                "preview2048": "https://localhost.yden.us:8443/thumbnail/135c783a-697e-4eea-a979-33f084c1e69b/av/2048px/waffles.jpg?t=1421433751539&s=e55ca1b3c573bb3f7b31bd5ac94b713a90f9f139",
+                "preview300": "https://localhost.yden.us:8443/thumbnail/135c783a-697e-4eea-a979-33f084c1e69b/av/300px/waffles.jpg?t=1421433751540&s=a4b124dd96286772cb6f9bbc33cc70cbc29966bc",
+                "previewAvailable2048": "true",
+                "preview600": "https://localhost.yden.us:8443/thumbnail/135c783a-697e-4eea-a979-33f084c1e69b/av/600px/waffles.jpg?t=1421433751539&s=d54220e28af39fa731556cdaf7813394dadc8729",
+                "preview125": "https://localhost.yden.us:8443/thumbnail/135c783a-697e-4eea-a979-33f084c1e69b/av/125px/waffles.jpg?t=1421433751539&s=eca44e7fd4b5d95675eb64265a8c7fa3c0b9c041"
+            },
+            "fileFormat": "PDF",
+            "dateAdded": "2014-12-18T18:44:55Z",
+            "dateLastEdited": "2014-12-18T18:44:55Z",
+            "size": "0.00 mb"
+        },
+        {
+            "name": "warning_but_none_crossing.pdf",
+            "uuid": "e60d2809-7e9d-4b02-8e15-a9279ea8c7d7",
+            "type": "PDF",
+            "previews": {
+                "preview160": "https://localhost.yden.us:8443/thumbnail/0bd4bfe5-eed5-48d3-b7d9-1934dec86368/av/160px/warning_but_none_crossing.jpg?t=1421433751541&s=76ab777c623029da87331a56f7f8b4d96f8d19ef",
+                "preview2048": "https://localhost.yden.us:8443/thumbnail/0bd4bfe5-eed5-48d3-b7d9-1934dec86368/av/2048px/warning_but_none_crossing.jpg?t=1421433751540&s=0f3997538f2f663b3d98c33cafa4040529b65484",
+                "preview300": "https://localhost.yden.us:8443/thumbnail/0bd4bfe5-eed5-48d3-b7d9-1934dec86368/av/300px/warning_but_none_crossing.jpg?t=1421433751541&s=c977ed9c2159a9c5a4bbb9899864232682877e70",
+                "previewAvailable2048": "true",
+                "preview600": "https://localhost.yden.us:8443/thumbnail/0bd4bfe5-eed5-48d3-b7d9-1934dec86368/av/600px/warning_but_none_crossing.jpg?t=1421433751540&s=c0bd7e662e0a3008295b579b7d72aea51559b0dd",
+                "preview125": "https://localhost.yden.us:8443/thumbnail/0bd4bfe5-eed5-48d3-b7d9-1934dec86368/av/125px/warning_but_none_crossing.jpg?t=1421433751540&s=fd4e52aabbdde6c1a33a6a0dbb1ca8d8ff03b629"
+            },
+            "fileFormat": "PDF",
+            "dateAdded": "2014-12-18T18:44:55Z",
+            "dateLastEdited": "2014-12-18T18:44:55Z",
+            "size": "0.00 mb"
+        }
+    ],
+    "numResults": 7
+}
