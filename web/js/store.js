@@ -25,7 +25,11 @@ global.AssetsStore = Reflux.createStore({
             var data = JSON.parse(resp);
             var assets = data.assets;
             assetCount = assets.length;
-            global.AssetsStore.updateList(assets);
+            //global.AssetsStore.updateList(assets);
+            global.AssetsStore.updateList(_.map(assets, function(item) {
+                item.randomize = true;
+                return item;
+            }));
         }, function(error){
             console.error("Failure", error);
         })
@@ -36,6 +40,13 @@ global.AssetsStore = Reflux.createStore({
             return itm.uuid !== uuid;
         });
         this.updateList(newList);
+    },
+
+    onShuffle: function() {
+        this.updateList(_.map(this.list, function(item) {
+            item.randomize = true;
+            return item;
+        }));
     },
 
     updateList: function(list){
@@ -55,7 +66,11 @@ global.AssetsStore = Reflux.createStore({
                     var data = JSON.parse(resp);
                     var assets = data.assets;
                     assetCount = assets.length;
-                    global.AssetsStore.updateList(assets);
+                    //global.AssetsStore.updateList(assets);
+                    global.AssetsStore.updateList(_.map(assets, function(item) {
+                        item.randomize = true;
+                        return item;
+                    }));
                 }, function(error){
                     console.error("Failure", error);
                 })

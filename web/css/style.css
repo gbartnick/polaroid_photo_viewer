@@ -25,7 +25,21 @@ body { overflow:hidden; }
 }
 
 .btn-remove-item {
+    /*position: absolute;*/
     float: right;
     margin: 5px;
     margin-top: -5px;
+}
+
+.btn-shuffle {
+    z-index: 1000;
+    position: absolute;
+    right: 0;
+    top: 0;
+    /*float: right;*/
+    margin: 25px;
+    /*margin-top: -5px;*/
+}
+.glyphicon-refresh {
+    margin-left: 5px;
 }

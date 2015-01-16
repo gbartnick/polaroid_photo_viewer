@@ -45,8 +45,15 @@
 
     var AssetPage = React.createClass({
         mixins: [Reflux.connect(AssetsStore, "list")],
+        shuffle: function() {
+            AssetsActions.shuffle();
+        },
         render: function () {
-            return (<div>
+            return (
+            <div>
+                <span className="btn-shuffle btn btn-primary btn-sm" onClick={this.shuffle}>Shuffle
+                    <i className='glyphicon glyphicon-refresh'></i>
+                </span>
                 <br/>
                 <AssetSearch></AssetSearch>
                 <br/>
@@ -140,7 +147,7 @@
     var highIndex = 1;
     var AssetItem = React.createClass({
         mixins: [React.addons.LinkedStateMixin],
-        getInitialState: function () {
+        randomize: function() {
             var wiw, wih;
             // Internet Explorer doesn't have the "window.innerWidth" and "window.innerHeight" properties
             if(window.innerWidth == undefined) {
@@ -162,12 +169,21 @@
             }
 
             return {
+                x: x,
+                y: y,
+                rotDegrees: rotDegrees
+            };
+        },
+        getInitialState: function () {
+            var r = this.randomize();
+
+            return {
                 isEditing: false,
                 dragging: false,
                 highIndex: 1,
-                left: x,
-                top: y,
-                rotDegrees: rotDegrees
+                left: r.x,
+                top: r.y,
+                rotDegrees: r.rotDegrees
             };
         },
         incrementHighIndex: function () {
@@ -223,6 +239,18 @@
                 }
             });
         },
+        componentWillReceiveProps: function(nextProps) {
+            if (nextProps.asset.randomize) {
+                console.log("RANDOMIZE");
+                var r = this.randomize();
+                this.setState({
+                    left: r.x,
+                    top: r.y,
+                    rotDegrees: r.rotDegrees
+                });
+                this.props.asset.randomize = false;
+            }
+        },
         render: function () {
             var divStyle = {
                 'left' : this.state.left,
@@ -237,7 +265,7 @@
                 'editing': this.state.isEditing
             });
 
-            var imgSrc = this.props.asset.previews.preview300.replace('https', 'http');
+            var imgSrc = this.props.asset.previews.preview600.replace('https', 'http');
 
             return (
                 <div className={classes} style={divStyle}>

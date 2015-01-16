@@ -4,7 +4,8 @@
     global.AssetsActions = Reflux.createActions([
         "search",
         "deleteAsset",
-        "toggleFavoriteAsset"
+        "toggleFavoriteAsset",
+        "shuffle"
     ]);
 
 })(window.Reflux, window);
