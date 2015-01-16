@@ -19,7 +19,8 @@
     "react": "~0.12.2",
     "react-draggable": "^0.4.0",
     "react-router": "~0.11.6",
-    "reflux": "~0.2.2"
+    "reflux": "~0.2.2",
+    "underscore": "^1.7.0"
   },
   "scripts": {
     "build": "webpack --watch",
