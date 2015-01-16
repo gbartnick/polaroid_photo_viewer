@@ -65,7 +65,7 @@ global.AssetsStore = Reflux.createStore({
         if(!loadedList){
             this.list = [];
             // MyUtils.get('/api/asset/search').then(function(resp){
-            if (true) {
+            if (!true) {
                 MyUtils.get('/api/rest/asset/search/fn:(kitten or puppies)').then(function(resp){
                     var data = JSON.parse(resp);
                     var assets = data.assets;

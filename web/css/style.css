@@ -8,7 +8,11 @@
                                                                   
 */
 body, div, img, p { padding:0; margin:0; }
-/*body { overflow:hidden; background-image:url(../images/bg.jpg); }*/
+body {
+    overflow:hidden;
+    background-color: lightgoldenrodyellow;
+    /*background-image:url(../images/bg.jpg);*/
+}
 .polaroid {
     min-width: 200px;
     min-height: 300px;
