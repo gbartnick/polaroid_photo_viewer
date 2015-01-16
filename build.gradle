@@ -1,0 +1,125 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'war'
+
+repositories {
+    maven {
+        credentials {
+            username USER
+            password PASSWORD
+        }
+        url 'https://widen.artifactoryonline.com/widen/repo/'
+    }
+}
+
+sourceCompatibility = 1.7
+
+group = 'widen'
+version = '0.0.1'
+webAppDirName = 'web'
+
+def mainClass = "com.widen.JettyRunner"
+
+configurations {
+    warexec
+    all*.exclude group: 'commons-logging', module: 'commons-logging'
+    all*.exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+    all*.exclude group: 'log4j', module: 'log4j'
+    all*.exclude group: 'org.eclipse.jetty.orbit', module: 'javax.servlet'  //@see http://stackoverflow.com/questions/9889674/sbt-jetty-and-servlet-3-0
+    all*.exclude group: 'javax.servlet', module: 'servlet-api'
+    all*.exclude group: 'org.glassfish.jersey.containers', module: 'jersey-container-servlet' // exclude servlet3 auto-deploy
+}
+
+task copyTesting(type: Copy) {
+    from { fileTree('build/classes/main').include('com/widen/*.class') }
+    from { fileTree('build/resources/main').include('com/widen/*.jks') }
+    into 'build/test-files'
+}
+
+// https://github.com/jhannes/java-ee-turnkey
+war {
+    doFirst{
+        from {
+            configurations.warexec.collect { zipTree(it) }
+        }
+
+        from { fileTree('build/classes/main').include('com/widen/*.class') }
+        from { fileTree('build/resources/main').include('com/widen/*.jks') }
+
+        manifest {
+            attributes("Main-Class": mainClass)
+            attributes("version": "$version")
+        }
+    }
+}
+
+ext.versions = [
+    slf4j: '1.7.6',
+    jersey: '2.12',
+    jetty: '9.1.3.v20140225',
+]
+
+dependencies {
+    warexec "com.beust:jcommander:1.35"
+    compile "com.beust:jcommander:1.35" // gson pukes if not on runtime classpath for unknown reasons
+    warexec "javax.servlet:javax.servlet-api:3.1.0"
+    warexec "org.eclipse.jetty.aggregate:jetty-all:$versions.jetty"
+    warexec "org.eclipse.jetty:jetty-util:$versions.jetty"
+    warexec "org.glassfish.web:javax.servlet.jsp:2.3.2"
+    warexec "org.glassfish.web:javax.el:2.2.6"
+
+    compile "ch.qos.logback:logback-classic:1.1.1"
+    compile "commons-io:commons-io:2.4"
+
+    compile "com.amazonaws:aws-java-sdk:1.8.4"
+    compile "com.logentries:logentries-appender:1.1.26"
+
+    compile "com.google.code.gson:gson:2.3"
+    compile "com.google.guava:guava:16.0.1"
+
+    compile "io.dropwizard.metrics:metrics-core:3.1.0"
+    compile "io.dropwizard.metrics:metrics-servlets:3.1.0"
+
+    compile "org.apache.commons:commons-lang3:3.1"
+    compile "org.apache.httpcomponents:httpclient:4.3.3"
+    compile "org.apache.tapestry:tapestry-ioc:5.4-beta-6"
+
+    compile 'org.jasypt:jasypt:1.9.2'
+
+    compile "org.glassfish.jersey.containers:jersey-container-servlet-core:$versions.jersey"
+    compile "org.glassfish.jersey.core:jersey-client:$versions.jersey"
+    compile "org.glassfish.jersey.ext:jersey-mvc-freemarker:$versions.jersey"
+    compile "org.glassfish.jersey.media:jersey-media-multipart:$versions.jersey"
+
+    compile "org.slf4j:slf4j-api:$versions.slf4j"
+    compile "org.slf4j:jcl-over-slf4j:$versions.slf4j"
+    compile "org.slf4j:jul-to-slf4j:$versions.slf4j"
+    compile "org.slf4j:log4j-over-slf4j:$versions.slf4j"
+
+    compile "widen:urlbuilder:0.10.2"
+    compile "widen:common-encryption:1.0-SNAPSHOT"
+
+
+
+}
+
+sourceSets {
+    main {
+        compileClasspath += configurations.warexec
+        resources.srcDir 'src'
+    }
+}
+
+idea {
+    module {
+        scopes.COMPILE.plus += [ configurations.warexec ]
+    }
+}
+
+tasks.idea {
+    dependsOn = [ ideaModule ]
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.2'
+}

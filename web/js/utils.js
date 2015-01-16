@@ -8,6 +8,10 @@
                     var req = new XMLHttpRequest();
                     req.open('GET', endpoint);
 
+                    //req.withCredentials = true;
+
+                    req.setRequestHeader('Authorization', 'Bearer 8c8390d5e6ba961bb21acb0466a689fb');
+
                     req.onload = function() {
                         // This is called even on 404 etc
                         // so check the status

@@ -1,14 +1,24 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
-<title>Polaroid Photo Viewer with jQuery and CSS3</title>
-<link rel="stylesheet" type="text/css" href="css/style.css"/>
-<script type="text/javascript" src="http://www.google.com/jsapi"></script>
-<script type="text/javascript" src="js/script.js"></script>
+	<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+	<title>Polaroid Photo Viewer with jQuery and CSS3</title>
+	<link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/style.css"/>
 </head>
 <body>
-<div class="polaroid">
+	<h1>Asset Viewer</h1>
+	<div id="viewerApp"></div>
+	<!-- <script type="application/javascript" src="node_modules/jquery/dist/jquery.js"></script> -->
+	<!-- <script type="application/javascript" src="dist/jquery-ui-1.11.2/jquery-ui.min.js"></script> -->
+	<script type="application/javascript" src="node_modules/react/dist/react-with-addons.js"></script>
+	<script type="application/javascript" src="node_modules/reflux/dist/reflux.js"></script>
+	<script type="application/javascript" src="node_modules/react-router/dist/react-router.js"></script>
+	<script type="application/javascript" src="dist/bundle.js"></script>
+	<!-- <script type="text/javascript" src="http://www.google.com/jsapi"></script> -->
+	<!-- <script type="text/javascript" src="js/script.js"></script> -->
+<!--<div class="polaroid">
 	<img src="images/01_colosseum.png" alt="Colloseum" />
 	<p>Coloseum in Rome</p>
 </div>
@@ -47,6 +57,6 @@
 <div class="polaroid">
 	<img src="images/10_tower_of_pisa.png" alt="Tower of Pisa" />
 	<p>Leaning Tower of Pisa</p>
-</div>
+</div>-->
 </body>
 </html>
