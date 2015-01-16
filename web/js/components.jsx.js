@@ -214,8 +214,8 @@
                 start: function(event, ui) {
                     dragging = true;
                     highIndex++;
-                    var cssObj = { 'box-shadow' : '#888 5px 10px 10px', // added in case CSS3 is standard
-                        '-webkit-box-shadow' : '#888 5px 10px 10px', // safari only
+                    var cssObj = { 'box-shadow' : '#888 10px 20px 20px', // added in case CSS3 is standard
+                        //'-webkit-box-shadow' : '#888 5px 10px 10px', // safari only
                         'margin-left' : '-10px',
                         'margin-top' : '-10px',
                         'z-index' : highIndex };
@@ -228,8 +228,10 @@
                     //} else {
                     //    var rotDegrees = MyUtils.randomXToY(0, 30); // rotate right
                     //}
-                    var cssObj = { 'box-shadow' : '', // added in case CSS3 is standard
-                        '-webkit-box-shadow' : '', // safari only
+                    var cssObj = {
+                        'box-shadow' : '#888 3px 5px 5px',
+                        //'box-shadow' : '', // added in case CSS3 is standard
+                        //'-webkit-box-shadow' : '', // safari only
                         //'transform' : 'rotate('+ rotDegrees +'deg)', // added in case CSS3 is standard
                         //'-webkit-transform' : 'rotate('+ rotDegrees +'deg)', // safari only
                         'margin-left' : '0px',
@@ -255,6 +257,7 @@
             var divStyle = {
                 'left' : this.state.left,
                 'top' : this.state.top,
+                'box-shadow' : '#888 3px 5px 5px',
                 '-webkit-transform' : 'rotate('+ this.state.rotDegrees +'deg)',  // safari only
                 'transform' : 'rotate('+ this.state.rotDegrees +'deg)'
             };
