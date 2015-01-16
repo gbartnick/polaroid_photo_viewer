@@ -13,5 +13,18 @@ body, div, img, p { padding:0; margin:0; }
 .polaroid img { width:335px; height:275px; margin:25px 0 0 15px; }
 .polaroid p { text-align:center; font-family:Georgia,serif; font-size:20px; color:#2E2E2E; margin-top:15px; }
 
-body { padding:50px; }
+/*body { padding:50px; }*/
 body { overflow:hidden; }
+#asset-search {
+    position: absolute;
+    z-index: 1000;
+}
+#asset-list {
+    margin: 50px;
+}
+
+.btn-remove-item {
+    float: right;
+    margin: 5px;
+    margin-top: -5px;
+}

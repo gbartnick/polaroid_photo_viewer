@@ -34,7 +34,15 @@
                     // Make the request
                     req.send();
                 });
+            },
+
+            // Function to get random number upto m
+            // http://roshanbh.com.np/2008/09/get-random-number-range-two-numbers-javascript.html
+            randomXToY: function (minVal,maxVal,floatVal) {
+                var randVal = minVal+(Math.random()*(maxVal-minVal));
+                return typeof floatVal=='undefined'?Math.round(randVal):randVal.toFixed(floatVal);
             }
+
         };
     }
     global.MyUtils = MyUtils();

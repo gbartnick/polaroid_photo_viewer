@@ -5,39 +5,40 @@ google.load("jquery", "1.3.1");
 google.load("jqueryui", "1.7.0");
 google.setOnLoadCallback(function()
 {
-	// When everything has loaded, place all polaroids on a random position	
-	$(".polaroid").each(function (i) {
-		var tempVal = Math.round(Math.random());
-		if(tempVal == 1) {
-			var rotDegrees = randomXToY(330, 360); // rotate left
-		} else {
-			var rotDegrees = randomXToY(0, 30); // rotate right
-		}
-		
-		// Internet Explorer doesn't have the "window.innerWidth" and "window.innerHeight" properties
-		if(window.innerWidth == undefined) { 
-			var wiw = 1000;
-			var wih = 700;
-		} else {
-			var wiw = window.innerWidth;
-			var wih = window.innerHeight;	
-		}
-		
-		var cssObj = { 'left' : Math.random()*(wiw-400),
-			'top' : Math.random()*(wih-400),
-			'-webkit-transform' : 'rotate('+ rotDegrees +'deg)',  // safari only
-			'transform' : 'rotate('+ rotDegrees +'deg)' }; // added in case CSS3 is standard
-		$(this).css(cssObj);
-	});
-	
+	// When everything has loaded, place all polaroids on a random position
+	// $(".polaroid").each(function (i) {
+	// 	var tempVal = Math.round(Math.random());
+	// 	if(tempVal == 1) {
+	// 		var rotDegrees = randomXToY(330, 360); // rotate left
+	// 	} else {
+	// 		var rotDegrees = randomXToY(0, 30); // rotate right
+	// 	}
+
+	// 	// Internet Explorer doesn't have the "window.innerWidth" and "window.innerHeight" properties
+	// 	if(window.innerWidth == undefined) {
+	// 		var wiw = 1000;
+	// 		var wih = 700;
+	// 	} else {
+	// 		var wiw = window.innerWidth;
+	// 		var wih = window.innerHeight;
+	// 	}
+
+	// 	var cssObj = { 'left' : Math.random()*(wiw-400),
+	// 		'top' : Math.random()*(wih-400),
+	// 		'-webkit-transform' : 'rotate('+ rotDegrees +'deg)',  // safari only
+	// 		'transform' : 'rotate('+ rotDegrees +'deg)' }; // added in case CSS3 is standard
+	// 	$(this).css(cssObj);
+	// });
+
 	// Set the Z-Index (used to display images on top while dragging)
 	var zindexnr = 1;
-	
+
 	// boolean to check if the user is dragging
 	var dragging = false;
-	
+
+	var polaroid = $(".polaroid");
 	// Show the polaroid on top when clicked on
-	$(".polaroid").mouseup(function(e){
+	polaroid.mouseup(function(e){
 		if(!dragging) {
 			// Bring polaroid to the foreground
 			zindexnr++;
@@ -47,9 +48,9 @@ google.setOnLoadCallback(function()
 			$(this).css(cssObj);
 		}
 	});
-	
+
 	// Make the polaroid draggable & display a shadow when dragging
-	$(".polaroid").draggable({
+	polaroid.draggable({
 		cursor: 'crosshair',
 		start: function(event, ui) {
 			dragging = true;
@@ -78,12 +79,12 @@ google.setOnLoadCallback(function()
 			dragging = false;
 		}
 	});
-	
+
 	// Function to get random number upto m
 	// http://roshanbh.com.np/2008/09/get-random-number-range-two-numbers-javascript.html
-	function randomXToY(minVal,maxVal,floatVal) {
-		var randVal = minVal+(Math.random()*(maxVal-minVal));
-		return typeof floatVal=='undefined'?Math.round(randVal):randVal.toFixed(floatVal);
-	}
-	
+	// function randomXToY(minVal,maxVal,floatVal) {
+	// 	var randVal = minVal+(Math.random()*(maxVal-minVal));
+	// 	return typeof floatVal=='undefined'?Math.round(randVal):randVal.toFixed(floatVal);
+	// }
+
 });

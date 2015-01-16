@@ -3,6 +3,7 @@
     var Route = ReactRouter.Route;
     var DefaultRoute = ReactRouter.DefaultRoute;
     var RouteHandler = ReactRouter.RouteHandler;
+    // var Draggable = ReactDraggable;
 
     var App = React.createClass({
         render: function () {
@@ -68,11 +69,18 @@
 
 
     var AssetSearch = React.createClass({
+        getInitialState: function() {
+            return {query: 'fn:(kitten or puppies)'};
+        },
+
         handleSearch: function (evnt) {
-            var note = evnt.target.value;
-            if (evnt.which === 13 && note) {
-                AssetsActions.addNote(note);
-                evnt.target.value = '';
+            //setState({
+            //    query: evnt.target.value
+            //});
+            var query = evnt.target.value;
+            if (evnt.which === 13 && query) {
+                AssetsActions.search(query);
+                //evnt.target.value = '';
             }
         },
 
@@ -81,7 +89,7 @@
                 width: '350px'
             };
             return (
-                <div id="searchAssets" className="container">
+                <div id="asset-search" className="container">
                     <div className="row">
                         <span className="col-md-6">
                             <input type="text" style={txtStyle} className="form-control" placeholder="Find Assets" onKeyUp={this.handleSearch}/>
@@ -96,45 +104,131 @@
         propTypes: {
             list: React.PropTypes.arrayOf(React.PropTypes.object).isRequired
         },
+        getInitialState: function () {
+            return {highIndex: 1, dragging: false};
+        },
+        incrementHighIndex: function () {
+            setState({
+                highIndex: this.state.highIndex + 1
+            });
+        },
+        componentDidMount: function () {
+
+        },
         render: function () {
-            return (
-                <div>
+            if (this.props.list.length > 0) {
+                return (
+                    <div id="asset-list">
                     {
                         this.props.list.map(function (asset) {
+                            //return <Draggable onMouseDown={this.incrementHighIndex}><AssetItem asset={asset} key={asset.uuid}/></Draggable>;
                             return <AssetItem asset={asset} key={asset.uuid}/>;
                         })
                     }
-                </div>
-            )
+                    </div>
+                )
+            } else {
+                return (
+                    <div id="asset-list">
+                    </div>
+                )
+            }
         }
     });
 
+    var dragging = false;
+    var highIndex = 1;
     var AssetItem = React.createClass({
         mixins: [React.addons.LinkedStateMixin],
         getInitialState: function () {
-            return {isEditing: false};
-        },
-        render: function () {
-            var tempVal = Math.round(Math.random());
-            if(tempVal == 1) {
-                var rotDegrees = randomXToY(330, 360); // rotate left
-            } else {
-                var rotDegrees = randomXToY(0, 30); // rotate right
-            }
-
+            var wiw, wih;
             // Internet Explorer doesn't have the "window.innerWidth" and "window.innerHeight" properties
             if(window.innerWidth == undefined) {
-                var wiw = 1000;
-                var wih = 700;
+                wiw = 1000;
+                wih = 700;
             } else {
-                var wiw = window.innerWidth;
-                var wih = window.innerHeight;
+                wiw = window.innerWidth;
+                wih = window.innerHeight;
             }
+            var x = Math.random()*(wiw-400);
+            var y = Math.random()*(wih-400);
+
+            var rotDegrees;
+            var tempVal = Math.round(Math.random());
+            if(tempVal == 1) {
+                rotDegrees = MyUtils.randomXToY(330, 360); // rotate left
+            } else {
+                rotDegrees = MyUtils.randomXToY(0, 30); // rotate right
+            }
+
+            return {
+                isEditing: false,
+                dragging: false,
+                highIndex: 1,
+                left: x,
+                top: y,
+                rotDegrees: rotDegrees
+            };
+        },
+        incrementHighIndex: function () {
+            setState({
+                highIndex: this.state.highIndex + 1
+            });
+        },
+        removeItem: function() {
+            AssetsActions.deleteAsset(this.props.asset.uuid);
+        },
+        componentDidMount: function () {
+            var polaroid = $(this.getDOMNode());
+            // Show the polaroid on top when clicked on
+            polaroid.mouseup(function(e){
+                if(!dragging) {
+                    // Bring polaroid to the foreground
+                    highIndex++;
+                    var cssObj = { 'z-index' : highIndex,
+                        'transform' : 'rotate(0deg)',	 // added in case CSS3 is standard
+                        '-webkit-transform' : 'rotate(0deg)' };  // safari only
+                    $(this).css(cssObj);
+                }
+            });
+
+            // Make the polaroid draggable & display a shadow when dragging
+            polaroid.draggable({
+                cursor: 'crosshair',
+                start: function(event, ui) {
+                    dragging = true;
+                    highIndex++;
+                    var cssObj = { 'box-shadow' : '#888 5px 10px 10px', // added in case CSS3 is standard
+                        '-webkit-box-shadow' : '#888 5px 10px 10px', // safari only
+                        'margin-left' : '-10px',
+                        'margin-top' : '-10px',
+                        'z-index' : highIndex };
+                    $(this).css(cssObj);
+                },
+                stop: function(event, ui) {
+                    //var tempVal = Math.round(Math.random());
+                    //if(tempVal == 1) {
+                    //    var rotDegrees = MyUtils.randomXToY(330, 360); // rotate left
+                    //} else {
+                    //    var rotDegrees = MyUtils.randomXToY(0, 30); // rotate right
+                    //}
+                    var cssObj = { 'box-shadow' : '', // added in case CSS3 is standard
+                        '-webkit-box-shadow' : '', // safari only
+                        //'transform' : 'rotate('+ rotDegrees +'deg)', // added in case CSS3 is standard
+                        //'-webkit-transform' : 'rotate('+ rotDegrees +'deg)', // safari only
+                        'margin-left' : '0px',
+                        'margin-top' : '0px' };
+                    $(this).css(cssObj);
+                    dragging = false;
+                }
+            });
+        },
+        render: function () {
             var divStyle = {
-                'left' : Math.random()*(wiw-400),
-                'top' : Math.random()*(wih-400),
-                '-webkit-transform' : 'rotate('+ rotDegrees +'deg)',  // safari only
-                'transform' : 'rotate('+ rotDegrees +'deg)'
+                'left' : this.state.left,
+                'top' : this.state.top,
+                '-webkit-transform' : 'rotate('+ this.state.rotDegrees +'deg)',  // safari only
+                'transform' : 'rotate('+ this.state.rotDegrees +'deg)'
             };
 
             var classes = React.addons.classSet({
@@ -149,10 +243,88 @@
                 <div className={classes} style={divStyle}>
                     <img src={imgSrc} alt={this.props.asset.name} />
                     <p>{this.props.asset.name}</p>
+                    <span className="btn-remove-item btn btn-primary btn-sm" onClick={this.removeItem}>
+                        <i className='glyphicon glyphicon-remove'></i>
+                    </span>
                 </div>
             );
         }
     });
+
+    var Draggable = React.createClass({
+      getDefaultProps: function () {
+        return {
+          // allow the initial position to be passed in as a prop
+          initialPos: {x: 0, y: 0}
+        }
+      },
+      getInitialState: function () {
+        return {
+          pos: this.props.initialPos,
+          dragging: false,
+          rel: null // position relative to the cursor
+        }
+      },
+      // we could get away with not having this (and just having the listeners on
+      // our div), but then the experience would be possibly be janky. If there's
+      // anything w/ a higher z-index that gets in the way, then you're toast,
+      // etc.
+      componentDidUpdate: function (props, state) {
+        if (this.state.dragging && !state.dragging) {
+          document.addEventListener('mousemove', this.onMouseMove)
+          document.addEventListener('mouseup', this.onMouseUp)
+        } else if (!this.state.dragging && state.dragging) {
+          document.removeEventListener('mousemove', this.onMouseMove)
+          document.removeEventListener('mouseup', this.onMouseUp)
+        }
+      },
+
+      // calculate relative position to the mouse and set dragging=true
+      onMouseDown: function (e) {
+        // only left mouse button
+        if (e.button !== 0) return
+        var pos = $(this.getDOMNode()).offset()
+        this.setState({
+          dragging: true,
+          rel: {
+            x: e.pageX - pos.left,
+            y: e.pageY - pos.top
+          }
+        })
+        e.stopPropagation()
+        e.preventDefault()
+      },
+      onMouseUp: function (e) {
+        this.setState({dragging: false})
+        e.stopPropagation()
+        e.preventDefault()
+      },
+      onMouseMove: function (e) {
+        if (!this.state.dragging) return
+        this.setState({
+          pos: {
+            x: e.pageX - this.state.rel.x,
+            y: e.pageY - this.state.rel.y
+          }
+        })
+        e.stopPropagation()
+        e.preventDefault()
+      },
+      render: function () {
+        // transferPropsTo will merge style & other props passed into our
+        // component to also be on the child DIV.
+        return this.transferPropsTo(React.DOM.div({
+          onMouseDown: this.onMouseDown,
+          style: {
+            position: 'absolute',
+            left: this.state.pos.x + 'px',
+            top: this.state.pos.y + 'px',
+            zIndex: this.props.highIndex
+          }
+        }, this.props.children))
+      }
+    })
+
 
     var routes = (
         <Route name="app" path="/" handler={App}>

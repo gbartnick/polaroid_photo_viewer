@@ -18,6 +18,19 @@ function getItemByUuid(list, uuid){
 global.AssetsStore = Reflux.createStore({
     listenables: [AssetsActions],
 
+    onSearch: function(query){
+        console.log("Searching");
+
+        MyUtils.get('/api/rest/asset/search/'+query).then(function(resp){
+            var data = JSON.parse(resp);
+            var assets = data.assets;
+            assetCount = assets.length;
+            global.AssetsStore.updateList(assets);
+        }, function(error){
+            console.error("Failure", error);
+        })
+    },
+
     onDeleteAsset: function(uuid){
         var newList = this.list.filter(function(itm){
             return itm.uuid !== uuid;
@@ -26,7 +39,7 @@ global.AssetsStore = Reflux.createStore({
     },
 
     updateList: function(list){
-        localStorage.setItem(localAssetsStorageKey, JSON.stringify(list));
+        // localStorage.setItem(localAssetsStorageKey, JSON.stringify(list));
         this.list = list;
         this.trigger(list);
     },
@@ -36,15 +49,17 @@ global.AssetsStore = Reflux.createStore({
         var loadedList;// = localStorage.getItem(localAssetsStorageKey);
         if(!loadedList){
             this.list = [];
-            MyUtils.get('/api/asset/search').then(function(resp){
-            // MyUtils.get('/api/rest/asset/search/fn:pdf').then(function(resp){
-                var data = JSON.parse(resp);
-                var assets = data.assets;
-                assetCount = assets.length;
-                global.AssetsStore.updateList(assets);
-            }, function(error){
-                console.error("Failure", error);
-            })
+            // MyUtils.get('/api/asset/search').then(function(resp){
+            if (true) {
+                MyUtils.get('/api/rest/asset/search/fn:(kitten or puppies)').then(function(resp){
+                    var data = JSON.parse(resp);
+                    var assets = data.assets;
+                    assetCount = assets.length;
+                    global.AssetsStore.updateList(assets);
+                }, function(error){
+                    console.error("Failure", error);
+                })
+            }
         }
         else{
             this.list = JSON.parse(loadedList);

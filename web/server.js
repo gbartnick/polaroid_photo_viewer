@@ -23,7 +23,7 @@ app.use('/', express.static(__dirname + '/'));
 app.use('/libs', express.static(__dirname + '/node_modules'));
 app.use('/libs', serveIndex('node_modules', {'icons': true}));
 
-// app.use(apiProxy('http://localhost:8080'));
+app.use(apiProxy('http://localhost:8080'));
 
 app.get('/api/asset/search', function(req, res){
     var file = fs.readFileSync(DataFilePath, 'utf8');
