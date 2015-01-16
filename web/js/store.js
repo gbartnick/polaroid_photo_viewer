@@ -39,7 +39,11 @@ global.AssetsStore = Reflux.createStore({
         var newList = this.list.filter(function(itm){
             return itm.uuid !== uuid;
         });
-        this.updateList(newList);
+        //this.updateList(newList);
+        this.updateList(_.map(newList, function(item) {
+            item.randomize = false;
+            return item;
+        }));
     },
 
     onShuffle: function() {

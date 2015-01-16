@@ -9,8 +9,22 @@
 */
 body, div, img, p { padding:0; margin:0; }
 /*body { overflow:hidden; background-image:url(../images/bg.jpg); }*/
-.polaroid { width:368px; height:376px; background-image:url(../images/polaroid-bg.png); position:absolute; }
-.polaroid img { width:335px; height:275px; margin:25px 0 0 15px; }
+.polaroid {
+    min-width: 200px;
+    min-height: 300px;
+    /*width:368px;*/
+    /*height:376px;*/
+    /*background-image:url(../images/polaroid-bg.png);*/
+    background-color: #add8e6;
+    position:absolute;
+}
+.polaroid img {
+
+    width: 300px;
+    min-height: 200px;
+    max-height: 500px;
+    /*width:335px; height:275px; */
+    margin:25px 20px 0 20px; }
 .polaroid p { text-align:center; font-family:Georgia,serif; font-size:20px; color:#2E2E2E; margin-top:15px;
     overflow: hidden;}
 
@@ -27,7 +41,7 @@ body { overflow:hidden; }
 .btn-remove-item {
     /*position: absolute;*/
     float: right;
-    margin: 5px;
+    margin: 10px;
     margin-top: -5px;
 }
 

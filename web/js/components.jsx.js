@@ -265,7 +265,7 @@
                 'editing': this.state.isEditing
             });
 
-            var imgSrc = this.props.asset.previews.preview600.replace('https', 'http');
+            var imgSrc = this.props.asset.previews.preview300.replace('https', 'http');
 
             return (
                 <div className={classes} style={divStyle}>
